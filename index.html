@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrokersKart - Your Trusted Real Estate Partner in Bangalore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6cd1c564-1258-49b1-b872-7ef5a2013986.png" alt="BrokersKart Logo" class="logo">
+                </div>
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li><a href="#home" class="nav__link active">Home</a></li>
+                        <li><a href="#buy" class="nav__link">Buy</a></li>
+                        <li><a href="#sell" class="nav__link">Sell</a></li>
+                        <li><a href="#rent" class="nav__link">Rent</a></li>
+                        <li><a href="#investment" class="nav__link">Micro Investment</a></li>
+                        <li><a href="#about" class="nav__link">About Us</a></li>
+                        <li><a href="#contact" class="nav__link">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <button class="btn btn--outline btn--sm">Login</button>
+                    <button class="btn btn--primary btn--sm">Sign Up</button>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="hero__background">
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1753598196/pplx_project_search_images/a08e60b154e201a5d41aa7456765004a07dbd17a.jpg" alt="Bangalore Skyline">
+            </div>
+            <div class="container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Your Trusted Real Estate Partner in Bangalore</h1>
+                    <p class="hero__subtitle">Discover premium properties through our comprehensive Buy, Sell, Rent, and Micro Investment services</p>
+                    <div class="hero__search">
+                        <select class="form-control" id="property-type-search">
+                            <option value="">Select Property Type</option>
+                            <option value="flat">Flat</option>
+                            <option value="villa">Villa</option>
+                            <option value="house">Individual House</option>
+                            <option value="land">Land</option>
+                        </select>
+                        <select class="form-control" id="location-search">
+                            <option value="">Select Location</option>
+                            <option value="whitefield">Whitefield</option>
+                            <option value="electronic-city">Electronic City</option>
+                            <option value="sarjapur">Sarjapur Road</option>
+                            <option value="hebbal">Hebbal</option>
+                            <option value="koramangala">Koramangala</option>
+                            <option value="indiranagar">Indiranagar</option>
+                        </select>
+                        <button class="btn btn--primary">Search Properties</button>
+                    </div>
+                    <div class="hero__cta">
+                        <button class="btn btn--primary btn--lg">Explore Properties</button>
+                        <button class="btn btn--outline btn--lg">Start Investing</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Overview -->
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services__grid">
+                    <div class="service-card">
+                        <div class="service-card__icon">🏠</div>
+                        <h3 class="service-card__title">Buy</h3>
+                        <p class="service-card__description">Find your dream property from our extensive collection of verified listings</p>
+                        <button class="btn btn--outline">Learn More</button>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card__icon">💰</div>
+                        <h3 class="service-card__title">Sell</h3>
+                        <p class="service-card__description">Get the best market value for your property with our expert guidance</p>
+                        <button class="btn btn--outline">Learn More</button>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card__icon">🔑</div>
+                        <h3 class="service-card__title">Rent</h3>
+                        <p class="service-card__description">Discover perfect rental properties or find reliable tenants for your property</p>
+                        <button class="btn btn--outline">Learn More</button>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-card__icon">📈</div>
+                        <h3 class="service-card__title">Micro Investment</h3>
+                        <p class="service-card__description">Start investing in real estate with as low as ₹10 Lakh through REITs</p>
+                        <button class="btn btn--outline">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Properties -->
+        <section class="featured-properties">
+            <div class="container">
+                <h2 class="section-title">Featured Properties</h2>
+                <div class="properties-grid" id="featured-properties-grid">
+                    <!-- Properties will be dynamically inserted here -->
+                </div>
+                <div class="text-center">
+                    <button class="btn btn--primary btn--lg">View All Properties</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose BrokersKart -->
+        <section class="why-choose">
+            <div class="container">
+                <h2 class="section-title">Why Choose BrokersKart</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-card__icon">👨‍💼</div>
+                        <h3>Expert Guidance</h3>
+                        <p>Professional advisors with deep market knowledge and years of experience</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-card__icon">📍</div>
+                        <h3>Local Knowledge</h3>
+                        <p>Comprehensive understanding of Bangalore's real estate landscape</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-card__icon">🔍</div>
+                        <h3>Transparent Process</h3>
+                        <p>Clear, honest dealings with complete transparency in all transactions</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-card__icon">💎</div>
+                        <h3>Micro Investment</h3>
+                        <p>Unique opportunity to invest in premium real estate with low entry barriers</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buy Section -->
+        <section id="buy" class="page-section hidden">
+            <div class="container">
+                <h2 class="section-title">Buy Properties</h2>
+                <div class="property-filters">
+                    <div class="filters-row">
+                        <select class="form-control">
+                            <option>Location</option>
+                            <option>Whitefield</option>
+                            <option>Electronic City</option>
+                            <option>Sarjapur Road</option>
+                        </select>
+                        <select class="form-control">
+                            <option>Property Type</option>
+                            <option>Flat</option>
+                            <option>Villa</option>
+                            <option>House</option>
+                            <option>Land</option>
+                        </select>
+                        <select class="form-control">
+                            <option>Price Range</option>
+                            <option>Below ₹50 Lakh</option>
+                            <option>₹50L - ₹1Cr</option>
+                            <option>₹1Cr - ₹2Cr</option>
+                            <option>Above ₹2Cr</option>
+                        </select>
+                        <select class="form-control">
+                            <option>BHK</option>
+                            <option>1 BHK</option>
+                            <option>2 BHK</option>
+                            <option>3 BHK</option>
+                            <option>4+ BHK</option>
+                        </select>
+                        <button class="btn btn--primary">Search</button>
+                    </div>
+                </div>
+                <div class="properties-grid" id="buy-properties-grid">
+                    <!-- Properties will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sell Section -->
+        <section id="sell" class="page-section hidden">
+            <div class="container">
+                <h2 class="section-title">Sell Your Property</h2>
+                <div class="sell-content">
+                    <div class="sell-form-container">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Get Free Property Valuation</h3>
+                                <form class="sell-form">
+                                    <div class="form-group">
+                                        <label class="form-label">Property Type</label>
+                                        <select class="form-control">
+                                            <option>Select Type</option>
+                                            <option>Flat</option>
+                                            <option>Villa</option>
+                                            <option>House</option>
+                                            <option>Land</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" placeholder="Enter property location">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Area (sq ft)</label>
+                                        <input type="number" class="form-control" placeholder="Enter area">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Your Name</label>
+                                        <input type="text" class="form-control" placeholder="Enter your name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" placeholder="Enter phone number">
+                                    </div>
+                                    <button type="submit" class="btn btn--primary btn--full-width">Get Free Valuation</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sell-process">
+                        <h3>How We Help You Sell</h3>
+                        <div class="process-steps">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <h4>Property Valuation</h4>
+                                <p>Free professional assessment of your property's market value</p>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <h4>Marketing & Listing</h4>
+                                <p>Strategic marketing across multiple platforms to reach qualified buyers</p>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <h4>Deal Closure</h4>
+                                <p>Expert negotiation and seamless transaction management</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rent Section -->
+        <section id="rent" class="page-section hidden">
+            <div class="container">
+                <h2 class="section-title">Rental Properties</h2>
+                <div class="rent-tabs">
+                    <button class="tab-btn active" data-tab="tenants">For Tenants</button>
+                    <button class="tab-btn" data-tab="landlords">For Landlords</button>
+                </div>
+                <div id="tenants-tab" class="tab-content active">
+                    <div class="rental-search">
+                        <div class="filters-row">
+                            <select class="form-control">
+                                <option>Location</option>
+                                <option>Whitefield</option>
+                                <option>Electronic City</option>
+                                <option>Koramangala</option>
+                            </select>
+                            <select class="form-control">
+                                <option>BHK</option>
+                                <option>1 BHK</option>
+                                <option>2 BHK</option>
+                                <option>3 BHK</option>
+                            </select>
+                            <select class="form-control">
+                                <option>Rent Range</option>
+                                <option>Below ₹20K</option>
+                                <option>₹20K - ₹40K</option>
+                                <option>₹40K - ₹60K</option>
+                                <option>Above ₹60K</option>
+                            </select>
+                            <button class="btn btn--primary">Search Rentals</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="landlords-tab" class="tab-content">
+                    <div class="landlord-services">
+                        <h3>Services for Property Owners</h3>
+                        <div class="services-list">
+                            <div class="service-item">
+                                <h4>Tenant Screening</h4>
+                                <p>Comprehensive background checks and verification</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Rent Management</h4>
+                                <p>Hassle-free rent collection and property maintenance</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Legal Support</h4>
+                                <p>Complete legal assistance for rental agreements</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="investment" class="page-section hidden">
+            <div class="container">
+                <h2 class="section-title">REIT Micro Investment</h2>
+                <div class="investment-intro">
+                    <p class="intro-text">Start your real estate investment journey with as low as ₹10 Lakh. Our REIT platform offers professionally managed, diversified real estate portfolios with attractive returns.</p>
+                </div>
+                <div class="investment-benefits">
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <h4>Low Entry Barrier</h4>
+                            <p>Minimum investment of just ₹10 </p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4>Professional Management</h4>
+                            <p>Expert fund managers handle your investments</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4>Diversified Portfolio</h4>
+                            <p>Spread across commercial and residential properties</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4>SEBI Regulated</h4>
+                            <p>Transparent and regulated investment platform</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="investment-opportunities">
+                    <h3>Current Investment Opportunities</h3>
+                    <div class="opportunities-grid" id="investment-opportunities">
+
+                    </div>
+                </div>
+                <div class="investment-calculator">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Investment Calculator</h3>
+                            <div class="calculator-inputs">
+                                <div class="form-group">
+                                    <label class="form-label">Investment Amount (₹)</label>
+                                    <input type="number" id="investment-amount" class="form-control" placeholder="10,00,000" min="1000000">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Expected Return (%)</label>
+                                    <input type="number" id="expected-return" class="form-control" placeholder="12" min="1" max="20">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Investment Period (Years)</label>
+                                    <input type="number" id="investment-period" class="form-control" placeholder="5" min="1" max="10">
+                                </div>
+                                <button class="btn btn--primary" onclick="calculateReturns()">Calculate Returns</button>
+                            </div>
+                            <div id="calculator-result" class="calculator-result hidden">
+                                <h4>Projected Returns</h4>
+                                <div class="result-item">
+                                    <span>Total Investment:</span>
+                                    <span id="total-investment">₹0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Expected Returns:</span>
+                                    <span id="total-returns">₹0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Total Value:</span>
+                                    <span id="total-value">₹0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="page-section hidden">
+            <div class="container">
+                <h2 class="section-title">About BrokersKart</h2>
+                <div class="about-content">
+                    <div class="about-intro">
+                        <p>BrokersKart is Bangalore's leading real estate platform, committed to revolutionizing property transactions through innovation, transparency, and exceptional service. Founded with a vision to democratize real estate investments, we bridge the gap between traditional property dealings and modern investment opportunities.</p>
+                    </div>
+                    <div class="about-mission">
+                        <h3>Our Mission</h3>
+                        <p>To make real estate accessible, transparent, and profitable for everyone through cutting-edge technology and deep market expertise.</p>
+                    </div>
+                    <div class="about-values">
+                        <h3>Our Values</h3>
+                        <div class="values-grid">
+                            <div class="value-item">
+                                <h4>Transparency</h4>
+                                <p>Complete honesty in all our dealings</p>
+                            </div>
+                            <div class="value-item">
+                                <h4>Innovation</h4>
+                                <p>Leveraging technology for better outcomes</p>
+                            </div>
+                            <div class="value-item">
+                                <h4>Excellence</h4>
+                                <p>Delivering exceptional service quality</p>
+                            </div>
+                            <div class="value-item">
+                                <h4>Trust</h4>
+                                <p>Building long-term relationships</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="page-section hidden">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-content">
+                    <div class="contact-form-container">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Get in Touch</h3>
+                                <form class="contact-form">
+                                    <div class="form-group">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" class="form-control" placeholder="Your Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" placeholder="your.email@example.com" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Service Interested In</label>
+                                        <select class="form-control">
+                                            <option>Select Service</option>
+                                            <option>Buy Property</option>
+                                            <option>Sell Property</option>
+                                            <option>Rent Property</option>
+                                            <option>Micro Investment</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Message</label>
+                                        <textarea class="form-control" rows="4" placeholder="Tell us about your requirements"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-details">
+                            <h3>Contact Information</h3>
+                            <div class="contact-item">
+                                <strong>Phone:</strong>
+                                <p>+91 80 4567 8900</p>
+                            </div>
+                            <div class="contact-item">
+                                <strong>Email:</strong>
+                                <p>info@brokerskart.com</p>
+                            </div>
+                            <div class="contact-item">
+                                <strong>Address:</strong>
+                                <p>Brigade Road, Bangalore, Karnataka 560001</p>
+                            </div>
+                            <div class="contact-item">
+                                <strong>Business Hours:</strong>
+                                <p>Monday - Saturday: 9:00 AM - 8:00 PM<br>Sunday: 10:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <div class="testimonials-grid" id="testimonials-grid">
+                    <!-- Testimonials will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6cd1c564-1258-49b1-b872-7ef5a2013986.png" alt="BrokersKart Logo" class="footer__logo">
+                    <p>Your trusted real estate partner in Bangalore, offering comprehensive buy, sell, rent, and investment services.</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#buy">Buy Properties</a></li>
+                        <li><a href="#sell">Sell Properties</a></li>
+                        <li><a href="#rent">Rent Properties</a></li>
+                        <li><a href="#investment">Micro Investment</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Popular Areas</h4>
+                    <ul>
+                        <li>Whitefield</li>
+                        <li>Electronic City</li>
+                        <li>Sarjapur Road</li>
+                        <li>Koramangala</li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>+91 80 4567 8900</li>
+                        <li>info@brokerskart.com</li>
+                        <li>Brigade Road, Bangalore</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 BrokersKart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
