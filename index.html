@@ -12,7 +12,7 @@
         <div class="container">
             <div class="header__content">
                 <div class="header__logo">
-                    <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6cd1c564-1258-49b1-b872-7ef5a2013986.png" alt="BrokersKart Logo" class="logo">
+                    <div class="logo-text">BrokersKart</div>
                 </div>
                 <nav class="nav">
                     <ul class="nav__list">
@@ -26,8 +26,8 @@
                     </ul>
                 </nav>
                 <div class="header__actions">
-                    <button class="btn btn--outline btn--sm">Login</button>
-                    <button class="btn btn--primary btn--sm">Sign Up</button>
+                    <button class="btn btn--outline btn--sm" id="login-btn">Login</button>
+                    <button class="btn btn--primary btn--sm" id="signup-btn">Sign Up</button>
                 </div>
                 <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
                     <span></span>
@@ -37,6 +37,139 @@
             </div>
         </div>
     </header>
+
+    <!-- Sign Up Modals -->
+    <!-- Step 1: Choose User Type -->
+    <div id="signup-modal-step1" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal('signup-modal-step1')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Join BrokersKart</h2>
+                <button class="modal-close" onclick="closeModal('signup-modal-step1')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subtitle">Choose your account type to get started</p>
+                <div class="signup-options">
+                    <button class="signup-option-btn" onclick="selectUserType('customer')">
+                        <div class="option-icon">👤</div>
+                        <div class="option-content">
+                            <h3>Customer Sign Up</h3>
+                            <p>For buying, selling, renting, or micro investment</p>
+                        </div>
+                    </button>
+                    <button class="signup-option-btn" onclick="selectUserType('agent')">
+                        <div class="option-icon">🏢</div>
+                        <div class="option-content">
+                            <h3>Agent Sign Up</h3>
+                            <p>For real estate agents and brokers</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 2: Choose Auth Method -->
+    <div id="signup-modal-step2" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal('signup-modal-step2')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-back" onclick="goBackToStep1()">&larr;</button>
+                <h2 id="step2-title">Customer Sign Up</h2>
+                <button class="modal-close" onclick="closeModal('signup-modal-step2')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subtitle">Choose your preferred sign up method</p>
+                <div class="auth-options">
+                    <button class="auth-option-btn" onclick="selectAuthMethod('google')">
+                        <div class="google-icon">G</div>
+                        <span>Sign up with Google</span>
+                    </button>
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+                    <button class="auth-option-btn manual-signup" onclick="selectAuthMethod('manual')">
+                        <div class="email-icon">📧</div>
+                        <span>Manual Sign Up</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 3: Manual Sign Up Form -->
+    <div id="signup-modal-step3" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal('signup-modal-step3')"></div>
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <button class="modal-back" onclick="goBackToStep2()">&larr;</button>
+                <h2 id="step3-title">Complete Your Registration</h2>
+                <button class="modal-close" onclick="closeModal('signup-modal-step3')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="signup-form" class="signup-form">
+                    <!-- Common fields for both customer and agent -->
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" name="fullName" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email ID *</label>
+                        <input type="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mobile Number *</label>
+                        <input type="tel" name="mobile" class="form-control" placeholder="+91 98765 43210" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password *</label>
+                        <input type="password" name="password" class="form-control" placeholder="Minimum 8 characters" minlength="8" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password *</label>
+                        <input type="password" name="confirmPassword" class="form-control" placeholder="Re-enter your password" required>
+                    </div>
+                    
+                    <!-- Agent-specific fields -->
+                    <div id="agent-fields" class="agent-fields hidden">
+                        <div class="form-group">
+                            <label class="form-label">Agent License Number *</label>
+                            <input type="text" name="licenseNumber" class="form-control" placeholder="Enter your license number">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Years of Experience *</label>
+                            <select name="experience" class="form-control">
+                                <option value="">Select experience</option>
+                                <option value="0-1">0-1 years</option>
+                                <option value="2-5">2-5 years</option>
+                                <option value="6-10">6-10 years</option>
+                                <option value="10+">10+ years</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Specialization *</label>
+                            <select name="specialization" class="form-control">
+                                <option value="">Select specialization</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="both">Both</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#" target="_blank">Terms & Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary btn--full-width btn--lg">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main>
@@ -62,7 +195,7 @@
                             <option value="whitefield">Whitefield</option>
                             <option value="electronic-city">Electronic City</option>
                             <option value="sarjapur">Sarjapur Road</option>
-                            <option value="hebbal">Hebbal</option>
+                            <option value="hsr-layout">HSR Layout</option>
                             <option value="koramangala">Koramangala</option>
                             <option value="indiranagar">Indiranagar</option>
                         </select>
@@ -82,27 +215,71 @@
                 <h2 class="section-title">Our Services</h2>
                 <div class="services__grid">
                     <div class="service-card">
-                        <div class="service-card__icon">🏠</div>
-                        <h3 class="service-card__title">Buy</h3>
-                        <p class="service-card__description">Find your dream property from our extensive collection of verified listings</p>
+                        <div class="service-card__image">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1753616294/pplx_project_search_images/4862040f4d27069e61b3cb46b05788af848ec664.jpg" 
+                                 alt="Family buying new house - Buy Property" 
+                                 class="service-image"
+                                 onerror="handleServiceImageError(this, 'buy')">
+                        </div>
+                        <h3 class="service-card__title">Buy Property</h3>
+                        <p class="service-card__description">Find your dream home in Bangalore with our extensive property listings</p>
+                        <ul class="service-features">
+                            <li>Verified Properties</li>
+                            <li>Expert Guidance</li>
+                            <li>Loan Assistance</li>
+                            <li>Legal Support</li>
+                        </ul>
                         <button class="btn btn--outline">Learn More</button>
                     </div>
                     <div class="service-card">
-                        <div class="service-card__icon">💰</div>
-                        <h3 class="service-card__title">Sell</h3>
-                        <p class="service-card__description">Get the best market value for your property with our expert guidance</p>
+                        <div class="service-card__image">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1753616294/pplx_project_search_images/b2af84ed1f9fbcb2eace0892233e8a19d7792409.jpg" 
+                                 alt="House with sold sign - Sell Property" 
+                                 class="service-image"
+                                 onerror="handleServiceImageError(this, 'sell')">
+                        </div>
+                        <h3 class="service-card__title">Sell Property</h3>
+                        <p class="service-card__description">Get the best price for your property with our professional selling services</p>
+                        <ul class="service-features">
+                            <li>Free Valuation</li>
+                            <li>Marketing Support</li>
+                            <li>Quick Sale Process</li>
+                            <li>Documentation Help</li>
+                        </ul>
                         <button class="btn btn--outline">Learn More</button>
                     </div>
                     <div class="service-card">
-                        <div class="service-card__icon">🔑</div>
-                        <h3 class="service-card__title">Rent</h3>
-                        <p class="service-card__description">Discover perfect rental properties or find reliable tenants for your property</p>
+                        <div class="service-card__image">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1753616295/pplx_project_search_images/064515a5ef7c2f258df6391614d8a0e2670b74dd.jpg" 
+                                 alt="Family moving with boxes - Rent Property" 
+                                 class="service-image"
+                                 onerror="handleServiceImageError(this, 'rent')">
+                        </div>
+                        <h3 class="service-card__title">Rent Property</h3>
+                        <p class="service-card__description">Find rental properties or list your property for rent with ease</p>
+                        <ul class="service-features">
+                            <li>Verified Tenants</li>
+                            <li>Digital Agreements</li>
+                            <li>Maintenance Support</li>
+                            <li>Rent Collection</li>
+                        </ul>
                         <button class="btn btn--outline">Learn More</button>
                     </div>
                     <div class="service-card">
-                        <div class="service-card__icon">📈</div>
+                        <div class="service-card__image">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1753616296/pplx_project_search_images/46cc4e7e517d0972323a723fcd74fb926216a446.jpg" 
+                                 alt="REIT investment infographic - Micro Investment" 
+                                 class="service-image"
+                                 onerror="handleServiceImageError(this, 'investment')">
+                        </div>
                         <h3 class="service-card__title">Micro Investment</h3>
-                        <p class="service-card__description">Start investing in real estate with as low as ₹10 Lakh through REITs</p>
+                        <p class="service-card__description">Start investing in real estate with our REIT micro investment opportunities</p>
+                        <ul class="service-features">
+                            <li>Low Minimum Investment</li>
+                            <li>Professional Management</li>
+                            <li>Regular Returns</li>
+                            <li>Diversified Portfolio</li>
+                        </ul>
                         <button class="btn btn--outline">Learn More</button>
                     </div>
                 </div>
@@ -162,6 +339,7 @@
                             <option>Whitefield</option>
                             <option>Electronic City</option>
                             <option>Sarjapur Road</option>
+                            <option>HSR Layout</option>
                         </select>
                         <select class="form-control">
                             <option>Property Type</option>
@@ -239,18 +417,24 @@
                         <div class="process-steps">
                             <div class="process-step">
                                 <div class="step-number">1</div>
-                                <h4>Property Valuation</h4>
-                                <p>Free professional assessment of your property's market value</p>
+                                <div class="step-content">
+                                    <h4>Property Valuation</h4>
+                                    <p>Free professional assessment of your property's market value</p>
+                                </div>
                             </div>
                             <div class="process-step">
                                 <div class="step-number">2</div>
-                                <h4>Marketing & Listing</h4>
-                                <p>Strategic marketing across multiple platforms to reach qualified buyers</p>
+                                <div class="step-content">
+                                    <h4>Marketing & Listing</h4>
+                                    <p>Strategic marketing across multiple platforms to reach qualified buyers</p>
+                                </div>
                             </div>
                             <div class="process-step">
                                 <div class="step-number">3</div>
-                                <h4>Deal Closure</h4>
-                                <p>Expert negotiation and seamless transaction management</p>
+                                <div class="step-content">
+                                    <h4>Deal Closure</h4>
+                                    <p>Expert negotiation and seamless transaction management</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -274,6 +458,7 @@
                                 <option>Whitefield</option>
                                 <option>Electronic City</option>
                                 <option>Koramangala</option>
+                                <option>HSR Layout</option>
                             </select>
                             <select class="form-control">
                                 <option>BHK</option>
@@ -314,6 +499,7 @@
             </div>
         </section>
 
+        <!-- Micro Investment Section -->
         <section id="investment" class="page-section hidden">
             <div class="container">
                 <h2 class="section-title">REIT Micro Investment</h2>
@@ -324,7 +510,7 @@
                     <div class="benefits-grid">
                         <div class="benefit-item">
                             <h4>Low Entry Barrier</h4>
-                            <p>Minimum investment of just ₹10 </p>
+                            <p>Minimum investment of just ₹10 Lakh</p>
                         </div>
                         <div class="benefit-item">
                             <h4>Professional Management</h4>
@@ -343,7 +529,7 @@
                 <div class="investment-opportunities">
                     <h3>Current Investment Opportunities</h3>
                     <div class="opportunities-grid" id="investment-opportunities">
-
+                        <!-- Opportunities will be loaded here -->
                     </div>
                 </div>
                 <div class="investment-calculator">
@@ -477,7 +663,7 @@
                             </div>
                             <div class="contact-item">
                                 <strong>Address:</strong>
-                                <p>Brigade Road, Bangalore, Karnataka 560001</p>
+                                <p>123 Brigade Road, Bangalore - 560001</p>
                             </div>
                             <div class="contact-item">
                                 <strong>Business Hours:</strong>
@@ -505,7 +691,7 @@
         <div class="container">
             <div class="footer__content">
                 <div class="footer__section">
-                    <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6cd1c564-1258-49b1-b872-7ef5a2013986.png" alt="BrokersKart Logo" class="footer__logo">
+                    <div class="footer__logo">BrokersKart</div>
                     <p>Your trusted real estate partner in Bangalore, offering comprehensive buy, sell, rent, and investment services.</p>
                 </div>
                 <div class="footer__section">
@@ -523,7 +709,7 @@
                         <li>Whitefield</li>
                         <li>Electronic City</li>
                         <li>Sarjapur Road</li>
-                        <li>Koramangala</li>
+                        <li>HSR Layout</li>
                     </ul>
                 </div>
                 <div class="footer__section">
@@ -531,7 +717,7 @@
                     <ul>
                         <li>+91 80 4567 8900</li>
                         <li>info@brokerskart.com</li>
-                        <li>Brigade Road, Bangalore</li>
+                        <li>123 Brigade Road, Bangalore</li>
                     </ul>
                 </div>
             </div>

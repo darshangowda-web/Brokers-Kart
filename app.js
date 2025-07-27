@@ -7,120 +7,145 @@ const appData = {
     contact: {
       phone: "+91 80 4567 8900",
       email: "info@brokerskart.com",
-      address: "Brigade Road, Bangalore, Karnataka 560001"
+      address: "123 Brigade Road, Bangalore - 560001"
     }
   },
   propertyTypes: ["Individual House", "Flat", "Villa", "Land"],
-  locations: ["Whitefield", "Electronic City", "Sarjapur Road", "Hebbal", "Koramangala", "Indiranagar", "JP Nagar", "Bannerghatta Road"],
+  locations: ["Whitefield", "Electronic City", "Sarjapur Road", "HSR Layout", "Koramangala", "Indiranagar", "JP Nagar", "BTM Layout"],
   featuredProperties: [
     {
       id: 1,
-      title: "Luxury 3BHK Apartment",
+      title: "Luxury 3BHK Apartment in Whitefield",
       location: "Whitefield",
-      price: "₹1.2 Cr",
+      price: "₹1.2 Crore",
       type: "Flat",
       area: "1650 sq ft",
-      description: "Modern apartment with premium amenities"
+      bedrooms: "3 BHK",
+      description: "Modern apartment with premium amenities near IT parks"
     },
     {
       id: 2,
-      title: "Independent Villa",
+      title: "Independent Villa in Sarjapur Road",
       location: "Sarjapur Road",
-      price: "₹2.8 Cr",
+      price: "₹2.8 Crore",
       type: "Villa",
-      area: "3200 sq ft",
-      description: "Spacious villa with garden and parking"
+      area: "3200 sq ft", 
+      bedrooms: "4 BHK",
+      description: "Spacious villa with garden and premium facilities"
     },
     {
       id: 3,
-      title: "2BHK Ready to Move",
+      title: "Ready to Move 2BHK in Electronic City",
       location: "Electronic City",
       price: "₹85 Lakh",
       type: "Flat",
       area: "1200 sq ft",
-      description: "Ready to move apartment near IT parks"
+      bedrooms: "2 BHK",
+      description: "Ready to move apartment perfect for IT professionals"
     },
     {
       id: 4,
-      title: "Plot for Sale",
-      location: "Devanahalli",
-      price: "₹45 Lakh",
+      title: "Plot for Sale in HSR Layout",
+      location: "HSR Layout",
+      price: "₹65 Lakh",
       type: "Land",
       area: "1800 sq ft",
-      description: "DTCP approved plot with clear title"
+      bedrooms: "N/A",
+      description: "DTCP approved plot with clear title in prime location"
     },
     {
       id: 5,
-      title: "Luxury Penthouse",
+      title: "Luxury Penthouse in Koramangala",
       location: "Koramangala",
-      price: "₹3.5 Cr",
+      price: "₹3.5 Crore",
       type: "Flat",
       area: "2800 sq ft",
-      description: "Premium penthouse with city views"
+      bedrooms: "4 BHK",
+      description: "Premium penthouse with city views and modern amenities"
     },
     {
       id: 6,
-      title: "Row House",
-      location: "Yelahanka",
-      price: "₹1.8 Cr",
+      title: "Row House in Indiranagar",
+      location: "Indiranagar",
+      price: "₹1.8 Crore",
       type: "Villa",
       area: "2400 sq ft",
-      description: "Modern row house in gated community"
+      bedrooms: "3 BHK",
+      description: "Modern row house in gated community with all facilities"
     }
   ],
-  microInvestment: {
-    minimumInvestment: "₹10 Lakh",
-    expectedReturns: "9-17%",
-    features: ["Regulated by SEBI", "Professional Management", "Diversified Portfolio", "Low Entry Barrier"],
-    opportunities: [
-      {
-        name: "Commercial Complex - Whitefield",
-        minInvestment: "₹10 Lakh",
-        expectedReturn: "12%",
-        duration: "3-5 years"
-      },
-      {
-        name: "IT Park - Electronic City",
-        minInvestment: "₹15 Lakh",
-        expectedReturn: "14%",
-        duration: "5-7 years"
-      },
-      {
-        name: "Residential Township - Sarjapur",
-        minInvestment: "₹12 Lakh",
-        expectedReturn: "11%",
-        duration: "4-6 years"
-      }
-    ]
-  },
+  microInvestmentOptions: [
+    {
+      name: "Bangalore Tech Parks REIT",
+      minInvestment: "₹10 Lakh",
+      expectedReturn: "8-12% annually",
+      type: "Commercial Office Spaces",
+      locations: ["Electronic City", "Whitefield", "Outer Ring Road"]
+    },
+    {
+      name: "Premium Residential REIT",
+      minInvestment: "₹15 Lakh", 
+      expectedReturn: "6-10% annually",
+      type: "Luxury Residential",
+      locations: ["Koramangala", "Indiranagar", "HSR Layout"]
+    }
+  ],
   testimonials: [
     {
       name: "Rajesh Kumar",
-      role: "Software Engineer",
-      text: "BrokersKart helped me find my dream home in Whitefield. Their micro investment option allowed me to diversify my portfolio.",
+      role: "Software Engineer", 
+      text: "BrokersKart helped me find the perfect apartment in Electronic City. Professional and transparent service.",
       rating: 5
     },
     {
       name: "Priya Sharma",
-      role: "Business Owner",
-      text: "Excellent service! They sold my property in Electronic City within 2 months at the best market price.",
+      role: "Investment Advisor",
+      text: "I invested ₹20 lakhs through their micro investment program. Excellent returns and professional management.", 
       rating: 5
     },
     {
       name: "Amit Patel",
-      role: "Investment Banker",
-      text: "The REIT micro investment platform is fantastic. Great returns with professional management.",
+      role: "Business Owner",
+      text: "Sold my villa in Sarjapur Road within 6 weeks at the best market price. Highly recommend BrokersKart.",
       rating: 5
     }
   ]
 };
 
-// DOM Elements
+// Global Variables
 let currentSection = 'home';
+let selectedUserType = null;
+let selectedAuthMethod = null;
+
+// Service image configuration
+const serviceConfig = {
+  buy: {
+    icon: '🏠',
+    title: 'BUY',
+    color: '#1FB8CD'
+  },
+  sell: {
+    icon: '💰',
+    title: 'SELL', 
+    color: '#FFC185'
+  },
+  rent: {
+    icon: '🔑',
+    title: 'RENT',
+    color: '#B4413C'
+  },
+  investment: {
+    icon: '📈',
+    title: 'INVEST',
+    color: '#5D878F'
+  }
+};
 
 // Initialize Application
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('Initializing BrokersKart application...');
   initializeNavigation();
+  initializeModals();
   renderFeaturedProperties();
   renderInvestmentOpportunities();
   renderTestimonials();
@@ -128,17 +153,302 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeTabs();
   initializeMobileMenu();
   initializeSearchAndFilters();
-  animateOnScroll();
+  handleServiceImages();
+  
+  // Ensure home is shown by default
+  showSection('home');
 });
+
+// Handle Service Images with Enhanced Fallback
+function handleServiceImages() {
+  console.log('Setting up service images...');
+  const serviceImages = document.querySelectorAll('.service-image');
+  
+  serviceImages.forEach((img, index) => {
+    // Set up the error handler immediately
+    img.onerror = function() {
+      handleServiceImageError(this, Object.keys(serviceConfig)[index]);
+    };
+    
+    // Also check if image is already broken
+    if (img.complete && img.naturalHeight === 0) {
+      handleServiceImageError(img, Object.keys(serviceConfig)[index]);
+    }
+  });
+}
+
+// Enhanced Service Image Error Handler
+function handleServiceImageError(img, serviceType) {
+  console.log('Image failed to load for service:', serviceType);
+  
+  if (!serviceConfig[serviceType]) {
+    console.error('Unknown service type:', serviceType);
+    return;
+  }
+  
+  // Hide the broken image
+  img.style.display = 'none';
+  
+  // Check if fallback already exists
+  const container = img.parentNode;
+  if (container.querySelector('.service-image-fallback')) {
+    console.log('Fallback already exists for:', serviceType);
+    return;
+  }
+  
+  // Create enhanced fallback
+  const fallback = document.createElement('div');
+  fallback.className = 'service-image-fallback';
+  fallback.style.background = `linear-gradient(135deg, ${serviceConfig[serviceType].color}, ${adjustBrightness(serviceConfig[serviceType].color, -20)})`;
+  
+  fallback.innerHTML = `
+    <div class="fallback-content">
+      <div class="fallback-icon">${serviceConfig[serviceType].icon}</div>
+      <div class="fallback-text">${serviceConfig[serviceType].title}</div>
+    </div>
+  `;
+  
+  // Add hover effect
+  fallback.addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.05)';
+    this.style.transition = 'transform 0.3s ease';
+  });
+  
+  fallback.addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1)';
+  });
+  
+  container.appendChild(fallback);
+  console.log('Fallback created for:', serviceType);
+}
+
+// Utility function to adjust color brightness
+function adjustBrightness(hexColor, percent) {
+  const num = parseInt(hexColor.replace("#", ""), 16);
+  const amt = Math.round(2.55 * percent);
+  const R = (num >> 16) + amt;
+  const G = (num >> 8 & 0x00FF) + amt;
+  const B = (num & 0x0000FF) + amt;
+  return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+    (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+    (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+}
+
+// Make handleServiceImageError available globally for HTML onerror attribute
+window.handleServiceImageError = handleServiceImageError;
+
+// Modal Functions
+function initializeModals() {
+  console.log('Initializing modals...');
+  
+  const signupBtn = document.getElementById('signup-btn');
+  const loginBtn = document.getElementById('login-btn');
+  
+  if (signupBtn) {
+    console.log('Sign up button found, adding event listener');
+    signupBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Sign up button clicked - opening modal');
+      openModal('signup-modal-step1');
+      return false;
+    });
+  } else {
+    console.error('Sign up button not found');
+  }
+  
+  if (loginBtn) {
+    console.log('Login button found, adding event listener');
+    loginBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Login button clicked');
+      alert('Login functionality will be implemented soon. Please sign up to create an account.');
+      return false;
+    });
+  } else {
+    console.error('Login button not found');
+  }
+  
+  // Initialize signup form
+  const signupForm = document.getElementById('signup-form');
+  if (signupForm) {
+    signupForm.addEventListener('submit', handleSignupSubmit);
+  }
+  
+  // Add click handlers for modal overlays
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal-overlay')) {
+      const modal = e.target.closest('.modal');
+      if (modal) {
+        closeModal(modal.id);
+      }
+    }
+  });
+  
+  // Prevent event bubbling on modal content
+  document.querySelectorAll('.modal-content').forEach(content => {
+    content.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  });
+}
+
+function openModal(modalId) {
+  console.log('Opening modal:', modalId);
+  // Close all other modals first
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.classList.add('hidden');
+  });
+  
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    console.log('Modal opened successfully');
+  } else {
+    console.error('Modal not found:', modalId);
+  }
+}
+
+function closeModal(modalId) {
+  console.log('Closing modal:', modalId);
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+    console.log('Modal closed successfully');
+  }
+}
+
+function selectUserType(userType) {
+  console.log('User type selected:', userType);
+  selectedUserType = userType;
+  const step2Title = document.getElementById('step2-title');
+  
+  if (step2Title) {
+    step2Title.textContent = userType === 'customer' ? 'Customer Sign Up' : 'Agent Sign Up';
+  }
+  
+  closeModal('signup-modal-step1');
+  openModal('signup-modal-step2');
+}
+
+function selectAuthMethod(method) {
+  console.log('Auth method selected:', method);
+  selectedAuthMethod = method;
+  
+  if (method === 'google') {
+    alert('Google Sign Up integration will be available soon. Please use Manual Sign Up for now.');
+    return;
+  }
+  
+  if (method === 'manual') {
+    const step3Title = document.getElementById('step3-title');
+    const agentFields = document.getElementById('agent-fields');
+    
+    if (step3Title) {
+      step3Title.textContent = selectedUserType === 'customer' ? 
+        'Customer Registration' : 'Agent Registration';
+    }
+    
+    if (agentFields) {
+      if (selectedUserType === 'agent') {
+        agentFields.classList.remove('hidden');
+        // Make agent fields required
+        const agentInputs = agentFields.querySelectorAll('input, select');
+        agentInputs.forEach(input => {
+          input.setAttribute('required', 'required');
+        });
+      } else {
+        agentFields.classList.add('hidden');
+        // Remove required from agent fields
+        const agentInputs = agentFields.querySelectorAll('input, select');
+        agentInputs.forEach(input => {
+          input.removeAttribute('required');
+        });
+      }
+    }
+    
+    closeModal('signup-modal-step2');
+    openModal('signup-modal-step3');
+  }
+}
+
+function goBackToStep1() {
+  closeModal('signup-modal-step2');
+  openModal('signup-modal-step1');
+}
+
+function goBackToStep2() {
+  closeModal('signup-modal-step3');
+  openModal('signup-modal-step2');
+}
+
+function handleSignupSubmit(e) {
+  e.preventDefault();
+  console.log('Signup form submitted');
+  
+  const formData = new FormData(e.target);
+  const data = {};
+  for (let [key, value] of formData.entries()) {
+    data[key] = value;
+  }
+  
+  // Validate password match
+  if (data.password !== data.confirmPassword) {
+    alert('Passwords do not match. Please try again.');
+    return;
+  }
+  
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(data.email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  
+  // Validate mobile number (Indian format)
+  const mobileRegex = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
+  if (!mobileRegex.test(data.mobile.replace(/\s+/g, ''))) {
+    alert('Please enter a valid Indian mobile number.');
+    return;
+  }
+  
+  // Validate terms acceptance
+  if (!data.terms) {
+    alert('Please accept the Terms & Conditions to continue.');
+    return;
+  }
+  
+  // Simulate successful registration
+  console.log('Registration data:', { ...data, userType: selectedUserType });
+  
+  closeModal('signup-modal-step3');
+  
+  const successMessage = selectedUserType === 'customer' ? 
+    'Welcome to BrokersKart! Your customer account has been created successfully. You can now explore properties and investment opportunities.' :
+    'Welcome to BrokersKart! Your agent account has been created successfully. Our team will verify your credentials and activate your account within 24 hours.';
+  
+  alert(successMessage);
+  
+  // Reset form and variables
+  e.target.reset();
+  selectedUserType = null;
+  selectedAuthMethod = null;
+}
 
 // Navigation Functions
 function initializeNavigation() {
+  console.log('Initializing navigation...');
   const navLinks = document.querySelectorAll('.nav__link');
   
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       const targetSection = this.getAttribute('href').substring(1);
+      console.log('Navigation clicked:', targetSection);
       
       // Update active nav link
       navLinks.forEach(l => l.classList.remove('active'));
@@ -149,35 +459,59 @@ function initializeNavigation() {
       
       // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      return false;
     });
   });
+  
+  // Handle logo click
+  const logo = document.querySelector('.header__logo .logo-text');
+  if (logo) {
+    logo.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Logo clicked');
+      showSection('home');
+      updateActiveNavLink('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return false;
+    });
+  }
   
   // Handle hero CTA buttons
   const exploreBtn = document.querySelector('.hero__cta .btn--primary');
   const investBtn = document.querySelector('.hero__cta .btn--outline');
   
   if (exploreBtn) {
-    exploreBtn.addEventListener('click', (e) => {
+    exploreBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
+      console.log('Explore button clicked');
       showSection('buy');
       updateActiveNavLink('buy');
+      return false;
     });
   }
   
   if (investBtn) {
-    investBtn.addEventListener('click', (e) => {
+    investBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
+      console.log('Invest button clicked');
       showSection('investment');
       updateActiveNavLink('investment');
+      return false;
     });
   }
   
   // Handle search button in hero
   const heroSearchBtn = document.querySelector('.hero__search .btn--primary');
   if (heroSearchBtn) {
-    heroSearchBtn.addEventListener('click', (e) => {
+    heroSearchBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       handlePropertySearch();
+      return false;
     });
   }
 }
@@ -193,6 +527,8 @@ function updateActiveNavLink(sectionId) {
 }
 
 function showSection(sectionId) {
+  console.log('Showing section:', sectionId);
+  
   // Hide all page sections
   const sections = document.querySelectorAll('.page-section');
   sections.forEach(section => {
@@ -236,7 +572,7 @@ function renderFeaturedProperties() {
   
   container.innerHTML = '';
   
-  appData.featuredProperties.forEach(property => {
+  appData.featuredProperties.slice(0, 6).forEach(property => {
     const propertyCard = createPropertyCard(property);
     container.appendChild(propertyCard);
   });
@@ -265,6 +601,7 @@ function createPropertyCard(property) {
       <div class="property-card__details">
         <span>🏢 ${property.type}</span>
         <span>📐 ${property.area}</span>
+        <span>🛏️ ${property.bedrooms}</span>
       </div>
       <p class="property-card__description">${property.description}</p>
     </div>
@@ -297,7 +634,7 @@ function renderInvestmentOpportunities() {
   
   container.innerHTML = '';
   
-  appData.microInvestment.opportunities.forEach(opportunity => {
+  appData.microInvestmentOptions.forEach(opportunity => {
     const opportunityCard = createOpportunityCard(opportunity);
     container.appendChild(opportunityCard);
   });
@@ -319,8 +656,12 @@ function createOpportunityCard(opportunity) {
         <strong>${opportunity.expectedReturn}</strong>
       </div>
       <div class="detail-item">
-        <span>Duration:</span>
-        <strong>${opportunity.duration}</strong>
+        <span>Type:</span>
+        <strong>${opportunity.type}</strong>
+      </div>
+      <div class="detail-item">
+        <span>Locations:</span>
+        <strong>${opportunity.locations.join(', ')}</strong>
       </div>
     </div>
     <button class="btn btn--primary btn--full-width" onclick="handleInvestNow('${opportunity.name}')">Invest Now</button>
@@ -430,11 +771,14 @@ function initializeForms() {
   serviceCards.forEach((card, index) => {
     const learnMoreBtn = card.querySelector('.btn');
     if (learnMoreBtn) {
-      learnMoreBtn.addEventListener('click', (e) => {
+      learnMoreBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         const services = ['buy', 'sell', 'rent', 'investment'];
+        console.log('Learn more clicked for service:', services[index]);
         showSection(services[index]);
         updateActiveNavLink(services[index]);
+        return false;
       });
     }
   });
@@ -442,10 +786,12 @@ function initializeForms() {
   // View All Properties button
   const viewAllBtn = document.querySelector('.featured-properties .btn--lg');
   if (viewAllBtn) {
-    viewAllBtn.addEventListener('click', (e) => {
+    viewAllBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       showSection('buy');
       updateActiveNavLink('buy');
+      return false;
     });
   }
 }
@@ -486,8 +832,9 @@ function initializeTabs() {
   const tabContents = document.querySelectorAll('.tab-content');
   
   tabButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
+    button.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       const targetTab = button.getAttribute('data-tab');
       
       // Remove active class from all buttons and contents
@@ -500,6 +847,8 @@ function initializeTabs() {
       if (targetContent) {
         targetContent.classList.add('active');
       }
+      
+      return false;
     });
   });
 }
@@ -510,7 +859,7 @@ function initializeMobileMenu() {
   const nav = document.querySelector('.nav');
   
   if (mobileToggle && nav) {
-    mobileToggle.addEventListener('click', () => {
+    mobileToggle.addEventListener('click', function() {
       nav.classList.toggle('active');
       mobileToggle.classList.toggle('active');
     });
@@ -522,18 +871,22 @@ function initializeSearchAndFilters() {
   // Property search in buy section
   const buySearchBtn = document.querySelector('#buy .filters-row .btn--primary');
   if (buySearchBtn) {
-    buySearchBtn.addEventListener('click', (e) => {
+    buySearchBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       handleBuySearch();
+      return false;
     });
   }
   
   // Rental search
   const rentalSearchBtn = document.querySelector('.rental-search .btn--primary');
   if (rentalSearchBtn) {
-    rentalSearchBtn.addEventListener('click', (e) => {
+    rentalSearchBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       handleRentalSearch();
+      return false;
     });
   }
 }
@@ -544,7 +897,7 @@ function handleBuySearch() {
   
   filters.forEach(select => {
     if (select.value) {
-      selectedFilters[select.previousElementSibling || 'filter'] = select.value;
+      selectedFilters[select.options[0].text] = select.value;
     }
   });
   
@@ -564,27 +917,6 @@ function handleRentalSearch() {
   
   console.log('Rental search with filters:', selectedFilters);
   alert('Searching rental properties with your criteria. Our team will show you the best matches.');
-}
-
-// Animation Functions
-function animateOnScroll() {
-  const elements = document.querySelectorAll('.service-card, .property-card, .benefit-card');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  elements.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(20px)';
-    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(element);
-  });
 }
 
 // Utility Functions
@@ -610,6 +942,12 @@ function debounce(func, wait) {
 // Global functions for HTML onclick handlers
 window.calculateReturns = calculateReturns;
 window.handleInvestNow = handleInvestNow;
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.selectUserType = selectUserType;
+window.selectAuthMethod = selectAuthMethod;
+window.goBackToStep1 = goBackToStep1;
+window.goBackToStep2 = goBackToStep2;
 
 // Export functions for potential future use
 window.BrokersKartApp = {
@@ -619,5 +957,8 @@ window.BrokersKartApp = {
   renderFeaturedProperties,
   renderInvestmentOpportunities,
   renderTestimonials,
-  updateActiveNavLink
+  updateActiveNavLink,
+  openModal,
+  closeModal,
+  handleServiceImageError
 };
